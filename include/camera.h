@@ -1,6 +1,7 @@
 #pragma once
-#include "glm/glm.hpp"
+#include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "glm/glm.hpp"
 #include "parameters.h"
 
 enum Camera_Movement
@@ -11,26 +12,30 @@ enum Camera_Movement
     RIGHT
 };
 
-const float YAW         = -90.0f;
-const float PITCH       = 0.0f;
-const float SPEED       = 2.5f;
-const float SENSITIVITY = 0.1f;
-const float ZOOM        = 45.0f;
+constexpr float YAW         = -90.0f;
+constexpr float PITCH       = 0.0f;
+constexpr float SPEED       = 2.5f;
+constexpr float SENSITIVITY = 0.1f;
+constexpr float ZOOM        = 45.0f;
 
 class Camera
 {
   public:
     Camera();
 
-    glm::mat4 GetViewMatrix()
+    glm::mat4 GetViewMatrix() const
     {
         return vmatrix;
     }
-    glm::mat4 GetProjMatrix()
+    glm::mat4 GetProjMatrix() const
     {
         return pmatrix;
     }
-    glm::vec3 GetPosition();
+    glm::vec3 GetPosition() const
+    {
+        return position;
+    }
+
     void ProcessKeyboardInput(Camera_Movement direction, float deltaTime);
     void ProcessMouseInput(float &pitch, const float &yaw);
     void ProcessRollInput(float yoffset);

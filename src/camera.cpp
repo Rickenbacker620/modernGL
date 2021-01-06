@@ -6,24 +6,12 @@
 using std::cout;
 using std::endl;
 
-void
-showvec3(glm::vec3 &v)
-{
-    cout << '|' << v.x << '|' << v.y << '|' << v.z << endl;
-}
-
 Camera::Camera()
 {
     right   = glm::normalize(glm::cross(direction, glm::vec3{0.0, 1.0, 0.0}));
     up      = glm::normalize(glm::cross(right, direction));
     vmatrix = glm::lookAt(position, position + direction, up);
     pmatrix = glm::perspective(glm::radians(fov), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
-}
-
-glm::vec3
-Camera::GetPosition()
-{
-    return position;
 }
 
 void

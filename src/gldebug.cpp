@@ -1,12 +1,18 @@
 #include "gldebug.h"
+#include "glm/glm.hpp"
+#include <iostream>
 
-void glClearError()
+using namespace std;
+
+void
+glClearError()
 {
     while (glGetError() != GL_NO_ERROR)
         ;
 }
 
-GLenum glCheckError_(const char *file, int line)
+GLenum
+glCheckError_(const char *file, int line)
 {
     GLenum errorCode;
     while ((errorCode = glGetError()) != GL_NO_ERROR)
@@ -39,4 +45,10 @@ GLenum glCheckError_(const char *file, int line)
         std::cout << error << " | " << file << " (" << line << ")" << std::endl;
     }
     return errorCode;
+}
+
+void
+showvec3(glm::vec3 &v)
+{
+    cout << '|' << v.x << '|' << v.y << '|' << v.z << endl;
 }
