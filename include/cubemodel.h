@@ -3,15 +3,15 @@
 
 class Cube : public Model
 {
-public:
+  public:
     Cube() = default;
     void SetLayout();
     VertexBufferLayout &GetLayout()
     {
-        return layout;
+        return *layout;
     }
     void DrawTriangle();
     void Render();
 
-private:
+  private:
 };

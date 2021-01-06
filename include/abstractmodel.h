@@ -32,9 +32,9 @@ class Model
 
   protected:
     unique_ptr<VertexArray> vao;
-    VertexBufferLayout layout;
-    VertexBuffer vbo;
-    ElementBuffer ebo;
-    Shader shader;
+    unique_ptr<VertexBufferLayout> layout;
+    unique_ptr<VertexBuffer> vbo;
+    unique_ptr<ElementBuffer> ebo;
+    unique_ptr<Shader> shader;
     glm::mat4 modelmat;
 };

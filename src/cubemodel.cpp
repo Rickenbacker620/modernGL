@@ -3,14 +3,14 @@
 void
 Cube::SetLayout()
 {
-    layout.Pushfloat(3);
+    layout->Pushfloat(3);
 }
 
 void
 Cube::DrawTriangle()
 {
     vao->Bind();
-    shader.Bind();
+    shader->Bind();
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
