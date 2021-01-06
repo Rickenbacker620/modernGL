@@ -1,16 +1,9 @@
 #include "cubemodel.h"
 
 void
-Cube::SetLayout()
-{
-    layout->Pushfloat(3);
-}
-
-void
 Cube::DrawTriangle()
 {
-    vao->Bind();
-    shader->Bind();
+    BindAll();
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 

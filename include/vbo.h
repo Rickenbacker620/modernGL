@@ -3,13 +3,16 @@
 #include "GLFW/glfw3.h"
 #include <vector>
 
-struct VertexBufferElement {
+struct VertexBufferElement
+{
     GLenum type;
     unsigned int count;
     unsigned char normalized;
 
-    static unsigned int GetSizeOfType(unsigned int type) {
-        switch (type) {
+    static unsigned int GetSizeOfType(unsigned int type)
+    {
+        switch (type)
+        {
         case GL_FLOAT:
             return 4;
         case GL_UNSIGNED_INT:
@@ -21,26 +24,32 @@ struct VertexBufferElement {
     }
 };
 
-class VertexBufferLayout {
-public:
-    VertexBufferLayout() : stride(0) {}
+class VertexBufferLayout
+{
+  public:
+    VertexBufferLayout() = default;
 
     void Pushfloat(unsigned int count);
     void Pushint(unsigned int count);
     void Pushchar(unsigned int count);
 
-    inline unsigned int GetStride() const { return stride; }
-    inline const std::vector<VertexBufferElement> &GetElements() const {
+    unsigned int GetStride() const
+    {
+        return stride;
+    }
+    const std::vector<VertexBufferElement> &GetElements() const
+    {
         return elements;
     }
 
-private:
+  private:
+    unsigned int stride = 0;
     std::vector<VertexBufferElement> elements;
-    unsigned int stride;
 };
 
-class VertexBuffer {
-public:
+class VertexBuffer
+{
+  public:
     VertexBuffer();
     VertexBuffer(const void *data, unsigned int size);
     ~VertexBuffer();
@@ -49,6 +58,6 @@ public:
     void Bind() const;
     void Unbind() const;
 
-private:
+  private:
     unsigned int id;
 };

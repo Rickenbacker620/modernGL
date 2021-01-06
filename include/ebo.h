@@ -4,20 +4,20 @@
 
 class ElementBuffer
 {
-public:
-    ElementBuffer() = default;
+  public:
+    ElementBuffer();
     ElementBuffer(const unsigned int *data, unsigned int count);
     ~ElementBuffer();
 
     void Bind() const;
     void Unbind() const;
     void AddIndex(const unsigned int *data, unsigned int count);
-    inline unsigned int GetCount() const
+    unsigned int GetCount() const
     {
         return count;
     }
 
-private:
-    unsigned int id;
-    unsigned int count;
+  private:
+    unsigned int id    = 0;
+    unsigned int count = 0;
 };

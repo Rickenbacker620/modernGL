@@ -1,15 +1,10 @@
 #pragma once
-#include "abstractmodel.h"
+#include "model.h"
 
 class Cube : public Model
 {
   public:
     Cube() = default;
-    void SetLayout();
-    VertexBufferLayout &GetLayout()
-    {
-        return *layout;
-    }
     void DrawTriangle();
     void Render();
 

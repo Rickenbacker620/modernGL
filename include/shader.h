@@ -8,13 +8,15 @@
 #include <sstream>
 #include <fstream>
 
-struct ShaderProgramSource {
+struct ShaderProgramSource
+{
     std::string VSource;
     std::string FSource;
 };
 
-class Shader {
-public:
+class Shader
+{
+  public:
     Shader();
     Shader(const std::string &path);
     Shader(const std::string &pathv, const std::string &pathf);
@@ -30,12 +32,11 @@ public:
     void SetUniform4f(const std::string &name, glm::vec4 value);
     void SetUniformMatrix4f(const std::string &name, glm::mat4 value);
 
-private:
+  private:
     unsigned int id;
     std::unordered_map<std::string, int> cache;
     unsigned int CompileShader(unsigned int type, const std::string &source);
     ShaderProgramSource ParseShader(const std::string &path);
-    ShaderProgramSource ParseShader(const std::string &pathv,
-                                    const std::string &pathf);
+    ShaderProgramSource ParseShader(const std::string &pathv, const std::string &pathf);
     void ProcessSource(ShaderProgramSource &src);
 };

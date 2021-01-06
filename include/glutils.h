@@ -8,7 +8,7 @@
 #include "shader.h"
 #include "texture.h"
 #include "camera.h"
-#include "abstractmodel.h"
+#include "model.h"
 #include "cubemodel.h"
 
 GLFWwindow *CreateApp(const std::string &title,
