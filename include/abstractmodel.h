@@ -6,29 +6,32 @@
 #include "ebo.h"
 #include "shader.h"
 #include "camera.h"
+#include <memory>
+
+using namespace std;
 
 class Model
 {
   public:
-    Model()          = default;
+    Model();
     virtual ~Model() = default;
 
     virtual void SetVertex(const void *data, unsigned int size);
     virtual void SetIndex(const unsigned int *data, unsigned int count);
-    virtual void SetShader(const std::string &path);
-    virtual void SetShader(const std::string &pathv, const std::string &pathf);
+    virtual void SetShader(const string &path);
+    virtual void SetShader(const string &pathv, const string &pathf);
     virtual void ConfigVao();
     virtual void SetLayout()    = 0;
     virtual void DrawTriangle() = 0;
     virtual void SetModelMatrix(glm::mat4 modelmat);
     virtual void SetVPMatrix(Camera &camera);
     virtual void Render() = 0;
-    virtual void SetUniform3f(const std::string &name, glm::vec3 value);
-    virtual void SetUniform4f(const std::string &name, glm::vec4 value);
-    virtual void SetUniformMatrix4f(const std::string &name, glm::mat4 value);
+    virtual void SetUniform3f(const string &name, glm::vec3 value);
+    virtual void SetUniform4f(const string &name, glm::vec4 value);
+    virtual void SetUniformMatrix4f(const string &name, glm::mat4 value);
 
   protected:
-    VertexArray vao;
+    unique_ptr<VertexArray> vao;
     VertexBufferLayout layout;
     VertexBuffer vbo;
     ElementBuffer ebo;

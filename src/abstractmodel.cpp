@@ -1,6 +1,8 @@
 #include "abstractmodel.h"
 #include "glad/glad.h"
 
+Model::Model() : vao(make_unique<VertexArray>()) {}
+
 void
 Model::SetVertex(const void *data, unsigned int size)
 {
@@ -65,5 +67,5 @@ Model::SetUniformMatrix4f(const std::string &name, glm::mat4 value)
 void
 Model::ConfigVao()
 {
-    vao.AddBuffer(vbo, layout);
+    vao->AddBuffer(vbo, layout);
 }
