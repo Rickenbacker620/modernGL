@@ -4,7 +4,7 @@
 #include "glm/glm.hpp"
 #include "parameters.h"
 
-enum Camera_Movement
+enum class CamDir
 {
     FORWARD,
     BACKWARD,
@@ -36,7 +36,7 @@ class Camera
         return position;
     }
 
-    void ProcessKeyboardInput(Camera_Movement direction, float deltaTime);
+    void ProcessKeyboardInput(CamDir direction, float deltaTime);
     void ProcessMouseInput(float &pitch, const float &yaw);
     void ProcessRollInput(float yoffset);
 

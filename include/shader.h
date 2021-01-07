@@ -8,12 +8,6 @@
 #include <sstream>
 #include <fstream>
 
-struct ShaderProgramSource
-{
-    std::string VSource;
-    std::string FSource;
-};
-
 class Shader
 {
   public:
@@ -27,16 +21,17 @@ class Shader
 
     void AddSource(const std::string &path);
     void AddSource(const std::string &pathv, const std::string &pathf);
+
     int GetUniformLocation(const std::string &name);
     void SetUniform3f(const std::string &name, glm::vec3 value);
     void SetUniform4f(const std::string &name, glm::vec4 value);
     void SetUniformMatrix4f(const std::string &name, glm::mat4 value);
 
   private:
-    unsigned int id;
+    unsigned int id = 0;
     std::unordered_map<std::string, int> cache;
     unsigned int CompileShader(unsigned int type, const std::string &source);
-    ShaderProgramSource ParseShader(const std::string &path);
-    ShaderProgramSource ParseShader(const std::string &pathv, const std::string &pathf);
-    void ProcessSource(ShaderProgramSource &src);
+    std::pair<std::string, std::string> ParseShader(const std::string &path);
+    std::pair<std::string, std::string> ParseShader(const std::string &pathv, const std::string &pathf);
+    void ProcessSource(std::pair<std::string, std::string> &&src);
 };

@@ -15,16 +15,16 @@ Camera::Camera()
 }
 
 void
-Camera::ProcessKeyboardInput(Camera_Movement dir, float deltaTime)
+Camera::ProcessKeyboardInput(CamDir dir, float deltaTime)
 {
     float velocity = speed * deltaTime;
-    if (dir == FORWARD)
+    if (dir == CamDir::FORWARD)
         position += direction * velocity;
-    if (dir == BACKWARD)
+    if (dir == CamDir::BACKWARD)
         position -= direction * velocity;
-    if (dir == LEFT)
+    if (dir == CamDir::LEFT)
         position -= right * velocity;
-    if (dir == RIGHT)
+    if (dir == CamDir::RIGHT)
         position += right * velocity;
     Update();
 }
